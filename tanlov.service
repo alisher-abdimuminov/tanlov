@@ -1,0 +1,17 @@
+[Unit]
+Description=Tanlov service
+Requires=tanlov.socket
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/home/ali/tanlov/
+ExecStart=/home/ali/tanlov/.venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/tanlov.sock \
+          config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

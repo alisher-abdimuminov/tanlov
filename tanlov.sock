@@ -1,0 +1,8 @@
+[Unit]
+Description=Tanlov socket
+
+[Socket]
+ListenStream=/run/tanlov.sock
+
+[Install]
+WantedBy=sockets.target
