@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tanlov.uzfi.uz", "localhost", "127.0.0.1"]
 
 
 INSTALLED_APPS = [
