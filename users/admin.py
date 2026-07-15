@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-from .models import User, Application, Criteria
+from .models import User, Application
 
 
 @admin.register(User)
@@ -16,18 +16,18 @@ class UserModelAdmin(UserAdmin, ModelAdmin):
     fieldsets = (
         ("Foydalanuvchini tahrirlash", {
             "fields": ("phone", "first_name", "last_name", )
-        }), 
+        }),
     )
     add_fieldsets = (
         ("Yangi foydalanuvchi qo'shish", {
             "fields": ("phone", "password1", "password2", "first_name", "last_name", )
-        }), 
+        }),
     )
 
 
-@admin.register(Criteria)
-class CriteriaModelAdmin(ModelAdmin):
-    list_display = ["name", "created", ]
+# @admin.register(Criteria)
+# class CriteriaModelAdmin(ModelAdmin):
+#     list_display = ["name", "created", ]
 
 
 @admin.register(Application)

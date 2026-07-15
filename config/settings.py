@@ -9,7 +9,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = ["tanlov.uzfi.uz", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["tanlov.samdpi.uz", "localhost", "127.0.0.1"]
 
 
 INSTALLED_APPS = [
@@ -92,4 +92,4 @@ AUTH_USER_MODEL = "users.User"
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CSRF_TRUSTED_ORIGINS = ["https://tanlov.uzfi.uz", "http://tanlov.uzfi.uz", "http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["https://tanlov.samdpi.uz", "http://tanlov.samdpi.uz", "http://localhost:8000"]
