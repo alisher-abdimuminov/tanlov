@@ -25,11 +25,6 @@ class UserModelAdmin(UserAdmin, ModelAdmin):
     )
 
 
-# @admin.register(Criteria)
-# class CriteriaModelAdmin(ModelAdmin):
-#     list_display = ["name", "created", ]
-
-
 @admin.register(Application)
 class ApplicationModelAdmin(ModelAdmin):
-    list_display = ["criteria", "author", "status", "created", ]
+    list_display = ["author", "created", ]
