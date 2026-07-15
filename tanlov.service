@@ -1,16 +1,16 @@
 [Unit]
 Description=Tanlov service
-Requires=tanlov.socket
+Requires=tanlovs.socket
 After=network.target
 
 [Service]
 User=root
 Group=root
-WorkingDirectory=/home/ali/tanlov/
-ExecStart=/home/ali/tanlov/.venv/bin/gunicorn \
+WorkingDirectory=/home/ali/tanlovs/
+ExecStart=/home/ali/tanlovs/.venv/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
-          --bind unix:/run/tanlov.sock \
+          --bind unix:/run/tanlovs.sock \
           config.wsgi:application
 
 [Install]
