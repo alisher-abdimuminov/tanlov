@@ -46,7 +46,7 @@
                     <span class="text-xs text-emerald-600">Yuborilgan vaqt: {{ application.created|date:"d.m.Y H:i" }}</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div>
                         <p class="text-gray-500">F.I.O:</p>
                         <p class="font-semibold text-gray-800">{{ application.fio }}</p>
@@ -54,6 +54,16 @@
                     <div>
                         <p class="text-gray-500">Bog'lanish uchun telefon:</p>
                         <p class="font-semibold text-gray-800">{{ application.phone }}</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Diplom turi:</p>
+                        <p class="font-semibold text-gray-800">
+                            {% if application.diploma_type == "bachelor" or application.diploma_type == "bakalavr" %}
+                                Bakalavr
+                            {% else %}
+                                Magistratura
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
 
@@ -100,6 +110,17 @@
                     <label class="block text-sm font-bold text-gray-700 mb-1" for="app_phone">Bog'lanish uchun telefon raqami</label>
                     <input id="app_phone" type="text" name="phone" required placeholder="+998 (90) 123-45-67"
                         class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" />
+                </div>
+
+                <!-- Diplom turi (Yangi qo'shilgan qism) -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1" for="diploma_type">Diplom turi</label>
+                    <select id="diploma_type" name="diploma_type" required
+                        class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 bg-white">
+                        <option value="" disabled selected>Tanlang...</option>
+                        <option value="bakalavr">Bakalavr</option>
+                        <option value="magistratura">Magistratura</option>
+                    </select>
                 </div>
 
                 <!-- Pasport file -->
