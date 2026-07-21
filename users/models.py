@@ -34,6 +34,7 @@ class Application(models.Model):
     passport = models.FileField(upload_to="applications")
     diploma_type = models.CharField(max_length=100, null=True, blank=True)
     diploma = models.FileField(upload_to="applications")
+    specialty = models.CharField(max_length=100, null=True, blank=True)
     certificate = models.FileField(upload_to="applications")
     phone = models.CharField(max_length=100)
 

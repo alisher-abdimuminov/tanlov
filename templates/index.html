@@ -65,6 +65,12 @@
                             {% endif %}
                         </p>
                     </div>
+                    {% if application.specialty %}
+                    <div>
+                        <p class="text-gray-500">Mutaxassislik:</p>
+                        <p class="font-semibold text-gray-800">{{ application.specialty }}</p>
+                    </div>
+                    {% endif %}
                 </div>
 
                 <hr class="border-emerald-200" />
@@ -129,6 +135,17 @@
                     </select>
                 </div>
 
+                <!-- Mutaxassislik (Dinamik paydo bo'ladi) -->
+                <div id="specialty_container" class="hidden">
+                    <label class="block text-sm font-bold text-gray-700 mb-1" for="specialty">Mutaxassislikni tanlang</label>
+                    <select id="specialty" name="specialty"
+                        class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 bg-white">
+                        <option value="" disabled selected>Mutaxassislikni tanlang...</option>
+                        <option value="Ta'lim va tarbiya nazariyasi va metodikasi (Boshlang'ich ta'lim)">Ta'lim va tarbiya nazariyasi va metodikasi (Boshlang'ich ta'lim)</option>
+                        <option value="Xorijiy til va adabiyoti (ingliz tili)">Xorijiy til va adabiyoti (ingliz tili)</option>
+                    </select>
+                </div>
+
                 <!-- Pasport file -->
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1" for="passport">Pasport nusxasi (PDF, rasm)</label>
@@ -136,7 +153,7 @@
                         class="block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
                 </div>
 
-                <!-- Dinamik o'zgaruvchi Hujjat fayli (Dinamik o'zgaradi) -->
+                <!-- Dinamik o'zgaruvchi Hujjat fayli -->
                 <div>
                     <label id="diploma_label" class="block text-sm font-bold text-gray-700 mb-1" for="diploma">Hujjat (PDF)</label>
                     <input id="diploma" type="file" name="diploma" required accept=".pdf, .doc, .docx"
@@ -160,20 +177,39 @@
     </div>
 </div>
 
-<!-- JavaScript dinamik matnni almashtirish uchun -->
+<!-- JavaScript dinamik matnni va mutaxassislik maydonini ko'rsatish/yashirish uchun -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const diplomaTypeSelect = document.getElementById('diploma_type');
         const diplomaLabel = document.getElementById('diploma_label');
+        const specialtyContainer = document.getElementById('specialty_container');
+        const specialtySelect = document.getElementById('specialty');
 
         if (diplomaTypeSelect && diplomaLabel) {
             diplomaTypeSelect.addEventListener('change', function () {
                 if (this.value === 'bakalavr') {
                     diplomaLabel.innerHTML = 'Shahodatnomasi (PDF)';
+
+                    // Mutaxassislik containerini yashirish va required'ni olib tashlash
+                    if (specialtyContainer) {
+                        specialtyContainer.classList.add('hidden');
+                        specialtySelect.removeAttribute('required');
+                        specialtySelect.value = ''; // Tanlovni tozalash
+                    }
                 } else if (this.value === 'magistratura') {
                     diplomaLabel.innerHTML = 'Diplom va uning ilovasi (PDF)';
+
+                    // Mutaxassislik containerini ko'rsatish va required qo'shish
+                    if (specialtyContainer) {
+                        specialtyContainer.classList.remove('hidden');
+                        specialtySelect.setAttribute('required', 'required');
+                    }
                 } else {
                     diplomaLabel.innerHTML = 'Hujjat (PDF)';
+                    if (specialtyContainer) {
+                        specialtyContainer.classList.add('hidden');
+                        specialtySelect.removeAttribute('required');
+                    }
                 }
             });
         }

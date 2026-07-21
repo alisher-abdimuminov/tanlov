@@ -28,6 +28,7 @@ def home_view(request: HttpRequest):
         # Fayllarni olish
         passport = request.FILES.get("passport")
         diploma_type = request.POST.get("diploma_type")
+        specialty = request.POST.get("specialty")
         diploma = request.FILES.get("diploma")
         certificate = request.FILES.get("certificate")  # Bu ixtiyoriy bo'lishi mumkin
 
@@ -44,6 +45,7 @@ def home_view(request: HttpRequest):
             passport=passport,
             diploma=diploma,
             diploma_type=diploma_type,
+            specialty=specialty,
             certificate=certificate
         )
 
