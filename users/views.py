@@ -2,13 +2,15 @@ from django.http import HttpRequest
 from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 
 from .models import User, Application
 
 
-@login_required(login_url="login")
+# @login_required(login_url="landing")
 def home_view(request: HttpRequest):
+    if not request.user.is_authenticated:
+        return render(request, "landing.html")
+
     context = {}
 
     # Joriy foydalanuvchiga tegishli arizani olish

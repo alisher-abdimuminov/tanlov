@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+    <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center gap-6">
+
+        <!-- Icon / Logo -->
+        <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+            </svg>
+        </div>
+
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Hujjat topshirish tizimi</h1>
+            <p class="text-gray-500 text-sm">Arizangizni topshirish va natijalarni kuzatish uchun tizimga kiring yoki ro'yxatdan o'ting.</p>
+        </div>
+
+        <div class="w-full flex flex-col gap-3">
+            <a href="{% url 'login' %}"
+               class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition duration-200">
+               Tizimga kirish
+            </a>
+
+            <a href="{% url 'signup' %}"
+               class="w-full py-3 px-4 bg-gray-50 hover:bg-gray-100 text-gray-700 font-semibold rounded-xl border border-gray-200 transition duration-200">
+               Ro'yxatdan o'tish
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
